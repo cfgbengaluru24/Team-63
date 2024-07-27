@@ -7,6 +7,7 @@ import Home from "./components/Home.jsx";
 //import Register from "./Pages/Register";
 import Footer from "./components/footer.jsx";
 import Navbar from "./components/navbar.jsx";
+import AdminLogin from './components/AdminLogin.jsx';
 //import { ToastContainer } from "react-toastify";
 //import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -42,6 +43,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="" element={<Home />} />
+          <Route path="/login/admin" element={<AdminLogin />} />
           {/* <Route path="/appointment" element={<Appointment />} /> */}
           {/* <Route path="/about" element={<AboutUs />} /> */}
           {/* <Route path="/register" element={<Register />} /> */}
