@@ -11,8 +11,8 @@ const lessonNotesSchema=new moongose.Schema({
     }
 })
 
-const lessonNotes = mongoose.model('lessonNotes', lessonNotesSchema);
+const LessonNotes = mongoose.model('LessonNotes', lessonNotesSchema);
 
-export default lessonNotes;
+export default LessonNotes;
 
 

@@ -15,6 +15,6 @@ const feedbackSchema=new moongose.Schema({
 });
 
 
-const feedback = mongoose.model('feedback', feedbackSchema);
+const Feedback = mongoose.model('Feedback', feedbackSchema);
 
-export default feedback;
+export default Feedback;

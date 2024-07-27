@@ -24,8 +24,8 @@ const studentSchema=new moongose.Schema({
     }
 });
 
-const student = mongoose.model('student', studentSchema);
+const Student = mongoose.model('Student', studentSchema);
 
-export default student;
+export default Student;
 
 

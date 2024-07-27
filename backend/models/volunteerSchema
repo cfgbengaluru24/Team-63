@@ -18,6 +18,6 @@ const volunteerSchema=new moongose.Schema({
     }
 });
 
-const volunteer = mongoose.model('volunteer', volunteerSchema);
+const Volunteer = mongoose.model('Volunteer', volunteerSchema);
 
-export default volunteer;
+export default Volunteer;
