@@ -1,16 +1,14 @@
 const moongose=require('moongose')
 
 const feedbackSchema=new moongose.schema({
-    name:{
-        type:String,
-        required: [true,"Name is Required"]
+    teacherName:{
+        type:String
     },
-    role:{
+    subject:{
         type:String,
-        required: [true,"Role is Required"],
-        enum:["Student","Volunteer","Leader Admin"]
+        required: [true,"Subject is Required"]
     },
-    feedback:{
+    comments:{
         type:String,
         required: [true,"Feedback is Required"],
     }
