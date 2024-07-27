@@ -1,38 +1,10 @@
 import React from 'react';
 import './Home.css'; // Import your custom CSS
+// import navbar from './navbar';
 
 export default function Home() {
   return (
     <div>
-      {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-light">
-        <div className="container">
-          <a className="navbar-brand" href="#">Be the Change</a>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link" href="#gram-panchayats">Home</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#water-user-committee">About us</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#pipelines">Impact Report</a>
-              </li>
-              {/* <li className="nav-item">
-                <a className="nav-link" href="#fees-collection">Fees Collection</a>
-              </li> */}
-              <li className="nav-item">
-                <a className="nav-link btn btn-primary" href="/portal/login">Login Panel</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section with Background Image */}
       <section className="hero-section">
         <div className="overlay"></div>
@@ -68,18 +40,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="footer">
-        <div className="container">
-          <p>&copy; 2024 Dhulikona Foundation. All Rights Reserved.</p>
-          <div className="social-icons">
-            <a href="#" className="me-2"><i className="fab fa-facebook"></i></a>
-            <a href="#" className="me-2"><i className="fab fa-twitter"></i></a>
-            <a href="#" className="me-2"><i className="fab fa-instagram"></i></a>
-          </div>
-          <p><a href="#">Contact Us</a></p>
-        </div>
-      </footer>
-    </div>
+      </div>
   );
 }
