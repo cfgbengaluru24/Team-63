@@ -1,6 +1,7 @@
-const mongoose=require('mongoose')
+import mongoose from 'mongoose';
 
-const leaderAdminSchema=new moongose.schema({
+
+const leaderAdminSchema=new moongose.Schema({
     name:{
         type:String,
         required: [true,"Name is Required"]
@@ -17,4 +18,7 @@ const leaderAdminSchema=new moongose.schema({
     } 
 });
 
-module.exports = mongoose.model('leaderAdminSchema',leaderAdminSchema)
+const leaderAdmin = mongoose.model('leaderAdmin', leaderAdminSchema);
+
+export default leaderAdmin;
+

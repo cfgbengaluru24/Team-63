@@ -1,6 +1,6 @@
-const moongose=require('moongose')
+import mongoose from 'mongoose';
 
-const feedbackSchema=new moongose.schema({
+const feedbackSchema=new moongose.Schema({
     teacherName:{
         type:String
     },
@@ -14,4 +14,7 @@ const feedbackSchema=new moongose.schema({
     }
 });
 
-module.exports = mongoose.model('feedbackSchema',feedbackSchema)
+
+const feedback = mongoose.model('feedback', feedbackSchema);
+
+export default feedback;

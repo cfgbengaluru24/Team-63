@@ -1,7 +1,8 @@
-const mongoose=require('mongoose')
+import mongoose from 'mongoose';
 
 
-const studentSchema=new moongose.schema({
+
+const studentSchema=new moongose.Schema({
     name:{
         type:String,
         required: [true,"Name is Required"]
@@ -23,4 +24,8 @@ const studentSchema=new moongose.schema({
     }
 });
 
-module.exports = mongoose.model('studentSchema',studentSchema)
+const student = mongoose.model('student', studentSchema);
+
+export default student;
+
+

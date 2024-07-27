@@ -1,7 +1,6 @@
-const mongoose=require('mongoose')
+import mongoose from 'mongoose';
 
-
-const lessonNotesSchema=new moongose.schema({
+const lessonNotesSchema=new moongose.Schema({
     lesson_id:{
         type:Number,
         required: [true,"Lesson id is Required"]
@@ -16,5 +15,8 @@ const lessonNotesSchema=new moongose.schema({
     }
 })
 
-module.exports = mongoose.model('lessonNotesSchema',lessonNotesSchema)
+const lessonNotes = mongoose.model('lessonNotes', lessonNotesSchema);
+
+export default lessonNotes;
+
 
