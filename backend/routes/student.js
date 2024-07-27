@@ -1,4 +1,5 @@
 import express from "express";
+import {sendfeedback,request,profile,registerStudent,loginStudent} from "../controllers/student.controller.js"
 
 const router = express.Router();
 
