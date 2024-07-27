@@ -21,7 +21,7 @@ const Login = () => {
       await axios
         .post(
           "http://localhost:4000/api/v1/user/patient/login",
-          {  email, password },
+          { email,password },
           {
             withCredentials: true,
             headers: { "Content-Type": "application/json" },
