@@ -7,25 +7,25 @@ const studentSchema=new moongose.Schema({
         type:String,
         required: [true,"Name is Required"]
     },
+    email:{
+        type:String,
+        required: [true,"Name is Required"]
+    },
     password:{
         type:String,
         required: [true,"Password is Required"]
     },
-    class:{
+    grade:{
         type:Number,
         required: [true,"class is Required"]
     },
     doubtSessionRequired:{
         type:Boolean
-    },    
-    course:{
-        type:String,
-        required: [true,"course is Required"]
     }
 });
 
-const student = mongoose.model('student', studentSchema);
+const Student = mongoose.model('Student', studentSchema);
 
-export default student;
+export default Student;
 
 

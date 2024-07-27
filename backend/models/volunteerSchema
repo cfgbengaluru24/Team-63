@@ -12,12 +12,12 @@ const volunteerSchema=new moongose.Schema({
     doubtSessionPending:{
         type:Boolean
     },
-    course:{
+    subject:{
         type:String,
         required: [true,"course is Required"]
     }
 });
 
-const volunteer = mongoose.model('lessonNotes', volunteerSchema);
+const Volunteer = mongoose.model('Volunteer', volunteerSchema);
 
-export default volunteer;
+export default Volunteer;

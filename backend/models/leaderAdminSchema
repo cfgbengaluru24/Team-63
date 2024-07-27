@@ -18,7 +18,7 @@ const leaderAdminSchema=new moongose.Schema({
     } 
 });
 
-const leaderAdmin = mongoose.model('leaderAdmin', leaderAdminSchema);
+const LeaderAdmin = mongoose.model('LeaderAdmin', leaderAdminSchema);
 
-export default leaderAdmin;
+export default LeaderAdmin;
 
