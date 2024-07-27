@@ -7,20 +7,20 @@ const studentSchema=new moongose.Schema({
         type:String,
         required: [true,"Name is Required"]
     },
+    email:{
+        type:String,
+        required: [true,"Name is Required"]
+    },
     password:{
         type:String,
         required: [true,"Password is Required"]
     },
-    class:{
+    grade:{
         type:Number,
         required: [true,"class is Required"]
     },
     doubtSessionRequired:{
         type:Boolean
-    },    
-    course:{
-        type:String,
-        required: [true,"course is Required"]
     }
 });
 

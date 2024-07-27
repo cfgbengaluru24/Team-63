@@ -1,11 +1,7 @@
 import mongoose from 'mongoose';
 
 const lessonNotesSchema=new moongose.Schema({
-    lesson_id:{
-        type:Number,
-        required: [true,"Lesson id is Required"]
-    },
-    course:{
+    subject:{
         type:String,
         required: [true,"Course is Required"]
     },
