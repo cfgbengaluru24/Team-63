@@ -9,6 +9,10 @@ const volunteerSchema=new moongose.Schema({
         type:String,
         required: [true,"Password is Required"]
     },
+    email:{
+        type:String,
+        required: [true,"Email is Required"]
+    },
     doubtSessionPending:{
         type:Boolean
     },
