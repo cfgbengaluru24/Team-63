@@ -30,7 +30,7 @@ body {
     border-color: rgba(0,0,0,0.1);
   }
   .hero-section {
-    background: url("images/back.jpg") no-repeat center center;
+    background: url('/src/images/homepg.jpg') no-repeat ;
     background-size: cover;
     color: #000;
     padding: 100px 0;
