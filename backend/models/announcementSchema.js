@@ -2,24 +2,24 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const AnnouncementSchema = new Schema({
-    teacherId: {
+    teacherId:{
         type: Schema.Types.ObjectId,
         ref: 'Volunteer',
         required: true
     },
-    date: {
-        type: Date,
+    date:{
+        type: Date, 
         required: true
     },
-    reason: {
+    reason:{
         type: String,
         required: true
     },
-    createdAt: {
+    createdAt:{
         type: Date,
         default: Date.now
     }
-}, {
+},{
     timestamps: true
 });
 
