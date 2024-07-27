@@ -5,8 +5,8 @@ import { ApiError } from "../utils/ApiError.js"
 import { ApiResponse } from "../utils/ApiResponse.js"
 
 const registerTeacher = async (req, res) => {
-    const {fullname, email, username,password,maxQualification,prevYrsOfExp } = req.body
-    if ([fullname, email, password, maxQualification, prevYrsOfExp].some((field) => field?.trim() === "")) {
+    const {fullname, email, username,password,subject } = req.body
+    if ([fullname, email, password, subject].some((field) => field?.trim() === "")) {
         return new ApiError(400,"All fields must be filled");
     }
     const existedTeacher = await volunteerSchema.findOne({
@@ -20,8 +20,8 @@ const registerTeacher = async (req, res) => {
             password: password,
             fullname: fullname,
             email: email.toLowerCase(),
-            maxQualification:maxQualification,
-            prevYrsOfExp:prevYrsOfExp
+            subject:subject.toLowerCase(),
+            doubtSessionPending:false
         }
     )
     if (!Teacher) {
@@ -76,14 +76,14 @@ const updatePassword = async (req, res) => {
         email: prevTeacher.email,
         fullname: prevTeacher.fullname,
         password: password,
-        prevYrsOfExp:prevTeacher.prevYrsOfExp,
-        maxQualification:prevTeacher.maxQualification
+        subject:prevTeacher.subject,
+        doubtSessionPending:prevTeacher.doubtSessionPending
     })
 
     return res.status(200).json({ message: "Teacher password changed", Teacher: savedTeacher })
 }
 
-const getTeacherDetails = async (req, res) => {
+const profile = async (req, res) => {
     const Teacher = req?.Teacher;
     if (!Teacher) {
         return new ApiError(404 , "Unauthorized access");
@@ -91,23 +91,12 @@ const getTeacherDetails = async (req, res) => {
     const username= req?.Teacher?.username;
     const email = req?.Teacher?.email
     try {
-        const TeacherAggregate = await volunteerSchema.aggregate([
-            {
-                $match:
-                {
-                    $and: [{ username:username }, { email: email }]
-                },
-            },
-            {
-                $project:
-                {
-                    username: 1,
-                    fullname: 1,
-                    email: 1
-                }
-            }
-        ])
-        return new ApiResponse(200,{Teacher:TeacherAggregate[0]},"Teacher details fetched")
+        const existedTeacher=await volunteerSchema.findOne(
+        {
+            $and:[{username:username},{email:email}]
+        }
+        )
+        return new ApiResponse(200,{Teacher:existedTeacher},"Teacher details fetched")
     }
     catch (error) {
         console.log("Error:", error);
@@ -163,6 +152,6 @@ export {
     loginTeacher,
     logoutTeacher,
     updatePassword,
-    getTeacherDetails,
+    profile,
     postmeetingnotes
 }

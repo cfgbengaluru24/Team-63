@@ -23,7 +23,25 @@ const studentSchema=new moongose.Schema({
         type:Boolean
     }
 });
+studentSchema.methods.generateAccessToken = function () {
+    const accessToken = jwt.sign(
+        {
+            _id: this._id,
+            email: this.email,
+            username: this.username
+        },
+        process.env.ACCESS_TOKEN_SECRET,
+        {
+            expiresIn: process.env.ACCESS_TOKEN_SPAN
+        }
+    )
+    return accessToken
+}
 
+studentSchema.pre("save", async function () {
+
+    if (this.isModified("password")) this.password = await bcrypt.hash(this.password, 10);
+})
 const Student = mongoose.model('Student', studentSchema);
 
 export default Student;
