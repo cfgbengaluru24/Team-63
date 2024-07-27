@@ -3,13 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './register.css'; // Assuming you save the custom CSS in this file
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { useHistory } from 'react-router-dom';
 
 const Register = () => {
+    console.log("checcking");
+    
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [grade, setGrade] = useState("");
   const [password, setPassword] = useState("");
-  const navigateTo = useNavigate();
+//   const navigateTo = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +36,7 @@ const Register = () => {
           }
         )
         .then((res) => {
-          navigateTo("/");
+        //   navigateTo("/");
           setName("");
           setEmail("");
           setGrade("");
@@ -44,6 +48,8 @@ const Register = () => {
   };
 
   return (
+    <>
+    
     <div>
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid">
@@ -119,6 +125,7 @@ const Register = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

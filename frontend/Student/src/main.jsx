@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import StudentLogin from './components/StudentLogin.jsx'
+// import App from './App.jsx'
+import Register from './components/register.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <StudentLogin />
+   <Register/>
   </React.StrictMode>,
 )
