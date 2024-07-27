@@ -1,0 +1,17 @@
+const mongoose=require('mongoose')
+
+const volunteerSchema=new moongose.schema({
+    name:{
+        type:String,
+        required: [true,"Name is Required"]
+    },
+    doubtSessionPending:{
+        type:Boolean
+    },
+    course:{
+        type:String,
+        required: [true,"course is Required"]
+    }
+});
+
+module.exports = mongoose.model('volunteerSchema',volunteerSchema)

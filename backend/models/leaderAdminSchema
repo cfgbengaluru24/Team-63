@@ -1,0 +1,16 @@
+const mongoose=require('mongoose')
+
+const leaderAdminSchema=new moongose.schema({
+    name:{
+        type:String,
+        required: [true,"Name is Required"]
+    },
+    doubtSessionRequired:{
+        type:Boolean
+    },
+    announcement:{
+        type:String
+    } 
+});
+
+module.exports = mongoose.model('leaderAdminSchema',leaderAdminSchema)
