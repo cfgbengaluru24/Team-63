@@ -8,7 +8,8 @@ const studentSchema=new mongoose.Schema({
     },
     email:{
         type:String,
-        required: [true,"Name is Required"]
+        required: [true,"Name is Required"],
+        unique: true
     },
     password:{
         type:String,
