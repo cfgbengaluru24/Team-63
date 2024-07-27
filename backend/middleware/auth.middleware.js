@@ -25,6 +25,7 @@ const verifyStudentJWT = async (req, res, next) => {
 }
 const verifyTeacherJWT = async (req, res, next) => {
     const accessToken = req?.cookies?.accessToken || req?.header("Authorization")?.replace('Bearer ', '')
+    console.log(accessToken);
     if (!accessToken) {
         return res.status(404).json({ message: "Unauthorized user" })
     }

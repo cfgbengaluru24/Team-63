@@ -1,10 +1,9 @@
 import express from "express";
-import { dbConnection } from "./database/databaseconnection.js";
+import  dbConnection  from "./database/databaseconnection.js";
 import { config } from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 //import fileUpload from "express-fileupload";
-import { errorMiddleware } from "./middlewares/error.js";
 import adminroutes from "./routes/admin.js";
 import teacherroutes from "./routes/teacher.js";
 import studentroutes from "./routes/student.js";

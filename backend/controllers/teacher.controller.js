@@ -6,8 +6,8 @@ import { ApiResponse } from "../utils/ApiResponse.js"
 import Student from "../models/studentSchema.js";
 
 const registerTeacher = async (req, res) => {
-    const {fullname, email, username,password,subject } = req.body
-    if ([fullname, email, password, subject].some((field) => field?.trim() === "")) {
+    const {name, email, username,password,subject } = req.body
+    if ([name, email, password, subject].some((field) => field?.trim() === "")) {
         return new ApiError(400,"All fields must be filled");
     }
     const existedTeacher = await Volunteer.findOne({
@@ -19,7 +19,7 @@ const registerTeacher = async (req, res) => {
     const Teacher = await Volunteer.create(
         {
             password: password,
-            fullname: fullname,
+            name: username,
             email: email.toLowerCase(),
             subject:subject.toLowerCase(),
             doubtSessionPending:false
@@ -38,7 +38,7 @@ const loginTeacher = async (req, res) => {
         return new ApiError(400,"All details must be filled ");
     }
     const Teacher = await Volunteer.findOne({
-        $and: [{ username: username }, { email: email }]
+        email:email
     })
     if (!Teacher) {
         return new ApiError(400,"Teacher is not registered");
@@ -47,7 +47,7 @@ const loginTeacher = async (req, res) => {
     if (!isMatched) {
         return new ApiError(400,"Enter valid password");
     }
-    const accessToken = Volunteer.generateAccessToken();
+    const accessToken = Teacher.generateAccessToken();
     return res.status(200).json({ message: "Teacher logged in", accessToken: accessToken })
 }
 
@@ -61,9 +61,6 @@ const logoutTeacher = (req, res) => {
 }
 
 const updatePassword = async (req, res) => {
-    if (!req.Teacher) {
-        return res.status(404).json({ message: "Unauthorized Teacher" })
-    }
     const { password } = req.body;
     if (password?.trim() === "") {
         return res.status(400).json({ message: "Password not entered" })
@@ -107,25 +104,21 @@ const profile = async (req, res) => {
 
 const postmeetingnotes=async (req,res)=>
 {
-    const Teacher=req?.Teacher;
-    if(!Teacher)
-    {
-        throw new ApiError(400,"Unauthorized user");
-    }
-    const meetingnotes=req.body;
-    if(!meetingnotes){
+    const {course,email,notes}=req.body;
+    console.log(course,email,notes)
+    if(!course || !email || !notes){
         throw new ApiError(404,"Meetingnotes must not be empty");
     }
     const createdMeetingNotes=await lessonNotes.create(
         {
-            studentmail:meetingnotes.studentmail,
-            course:meetingnotes.course,
-            notes:meetingnotes.notes
+            studentmail:email,
+            subject:course,
+            notes:notes
         }
     )
     const existedStudent=await Student.findOne(
         {
-            email:meetingnotes.studentmail
+            email:email
         }
     )
     if(!existedStudent){
@@ -136,10 +129,6 @@ const postmeetingnotes=async (req,res)=>
 
 const getmeetingnotes=async (req,res)=>
 {
-    const Teacher = req?.Teacher;
-    if (!Teacher) {
-        throw new ApiError(400, "Unauthorized user");
-    }
     const {studentmail}=req.body;
     if(!studentmail)
     {
@@ -153,10 +142,6 @@ const getmeetingnotes=async (req,res)=>
 
 const postAnnouncement=async (req,res)=>
 {
-    const teacher=req?.Teacher
-    if(!teacher){
-        throw new ApiError(404,"Unauthorized user");
-    }
     const { date,reason}=req.body;
     if(!date || !reason)
     {
@@ -174,10 +159,6 @@ const postAnnouncement=async (req,res)=>
 
 const announcement=async (req,res)=>
 {
-    const Teacher=req?.Teacher
-    if(!Teacher){
-        throw new ApiError(400,"Unauthorized user");
-    }
     const announcements=await announcement.findAll();
     return new ApiResponse(200,announcements,"All announcements retrieved successfully")
 

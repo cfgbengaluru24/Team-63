@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const feedbackSchema=new moongose.Schema({
+const feedbackSchema=new mongoose.Schema({
     studentId: 
     { 
         type: mongoose.Schema.Types.ObjectId, 

@@ -1,14 +1,15 @@
-import { asyncHandler } from "../utils/asyncHandler"
-import Student from "../models/studentSchema"
-import Feedback from "../models/feedbackSchema"
-import { ApiError } from "../utils/ApiError"
+import { asyncHandler } from "../utils/asyncHandler.js"
+import Student from "../models/studentSchema.js"
+import Feedback from "../models/feedbackSchema.js"
+import { ApiError } from "../utils/ApiError.js"
+import { ApiResponse } from "../utils/ApiResponse.js"
 
 const registerStudent=asyncHandler(
     async (req, res) => {
        const {name,email,grade,password}=req.body
     
        if(
-            [name,email,password,grade].some((field)=> field?.trim()==="")
+            !name || !email || !grade || !password
         ){
             throw new ApiError(400, "all fields are required")
         }
