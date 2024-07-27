@@ -1,8 +1,9 @@
 import volunteerSchema from "../models/volunteerSchema";
 import bcrypt from "bcrypt";
-import lessonNotesSchema from "../models/lessonNotesSchema.js"
+import lessonNotes from "../models/lessonNotesSchema.js"
 import { ApiError } from "../utils/ApiError.js"
 import { ApiResponse } from "../utils/ApiResponse.js"
+import Student from "../models/studentSchema.js";
 
 const registerTeacher = async (req, res) => {
     const {fullname, email, username,password,subject } = req.body
@@ -113,45 +114,82 @@ const postmeetingnotes=async (req,res)=>
     }
     const meetingnotes=req.body;
     if(!meetingnotes){
-        throw new ApiError(404,"Meeting notes must not be empty");
+        throw new ApiError(404,"Meetingnotes must not be empty");
     }
-    const createdMeetingNotes=await lessonNotesSchema.create(
+    const createdMeetingNotes=await lessonNotes.create(
         {
-            lesson_id:meetingnotes.lesson_id,
+            studentmail:meetingnotes.studentmail,
             course:meetingnotes.course,
             notes:meetingnotes.notes
         }
     )
+    const existedStudent=await Student.findOne(
+        {
+            email:meetingnotes.studentmail
+        }
+    )
+    if(!existedStudent){
+        throw new ApiError(400,"Student mail is invalid");
+    }
     return new ApiResponse(200,createdMeetingNotes,"Meeting notes added");
 }
 
-// const getmeetingnotes=async (req,res)=>
-// {
-//     const Teacher = req?.Teacher;
-//     if (!Teacher) {
-//         throw new ApiError(400, "Unauthorized user");
-//     }
-//     const meetingnotes=
-// }
+const getmeetingnotes=async (req,res)=>
+{
+    const Teacher = req?.Teacher;
+    if (!Teacher) {
+        throw new ApiError(400, "Unauthorized user");
+    }
+    const {studentmail}=req.body;
+    if(!studentmail)
+    {
+        throw new ApiError(400,"student mail must not be empty");
+    }
+    const requiredNotes=await lessonNotes.findOne({
+        studentmail:studentmail
+    })
+    return new ApiResponse(200,{meetingnotes:requiredNotes},"Required meetingnotes retrieved successfully")
+}
 
-// const announcement=async (req,res)=>
-// {
-//     const Teacher=req?.Teacher
-//     if(!Teacher){
-//         throw new ApiError(400,"Unauthorized user");
-//     }
-//     const ann=req?.body;
-//     if(!ann)
-//     {
-//         throw new ApiError(400,"Announcement must not be empty");
-//     }
+const postAnnouncement=async (req,res)=>
+{
+    const teacher=req?.Teacher
+    if(!teacher){
+        throw new ApiError(404,"Unauthorized user");
+    }
+    const { date,reason}=req.body;
+    if(!date || !reason)
+    {
+        throw new ApiError(400,"All fields must be filled");
+    }
+    const announcement=await announcement.create(
+        {
+            teacherId:teacher._id,
+            date:date,
+            reason:reason  
+        }
+    )
+    return new ApiResponse(200,{announcement:announcement},"User has announced successfully");
+}
 
-// }
+const announcement=async (req,res)=>
+{
+    const Teacher=req?.Teacher
+    if(!Teacher){
+        throw new ApiError(400,"Unauthorized user");
+    }
+    const announcements=await announcement.findAll();
+    return new ApiResponse(200,announcements,"All announcements retrieved successfully")
+
+}
 export {
     registerTeacher,
     loginTeacher,
     logoutTeacher,
     updatePassword,
     profile,
-    postmeetingnotes
+    postmeetingnotes,
+    getmeetingnotes,
+    announcement,
+    postAnnouncement
 }
