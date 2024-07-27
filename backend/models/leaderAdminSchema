@@ -5,6 +5,10 @@ const leaderAdminSchema=new moongose.schema({
         type:String,
         required: [true,"Name is Required"]
     },
+    password:{
+        type:String,
+        required: [true,"Password is Required"]
+    },
     doubtSessionRequired:{
         type:Boolean
     },

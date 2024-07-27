@@ -6,6 +6,10 @@ const studentSchema=new moongose.schema({
         type:String,
         required: [true,"Name is Required"]
     },
+    password:{
+        type:String,
+        required: [true,"Password is Required"]
+    },
     class:{
         type:Number,
         required: [true,"class is Required"]
