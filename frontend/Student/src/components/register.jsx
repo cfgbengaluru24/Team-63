@@ -71,7 +71,7 @@ const Register = () => {
               id="name" 
               aria-describedby="nameHelp" 
               value={name} 
-              onChange={handleChange} 
+              onChange={(e) => setName(e.target.value)} 
               required 
             />
           </div>
@@ -84,7 +84,7 @@ const Register = () => {
               id="email" 
               aria-describedby="emailHelp" 
               value={email} 
-              onChange={handleChange} 
+              onChange={(e) => setEmail(e.target.value)}
               required 
             />
           </div>
@@ -97,7 +97,7 @@ const Register = () => {
               id="grade" 
               aria-describedby="gradeHelp" 
               value={grade} 
-              onChange={handleChange} 
+              onChange={(e) => setGrade(e.target.value)}
               required 
             />
           </div>
@@ -109,13 +109,13 @@ const Register = () => {
               className="form-control" 
               id="password" 
               value={password} 
-              onChange={handleChange} 
+              onChange={(e) => setPassword(e.target.value)}
               required 
             />
           </div>
-          <button type="submit" className="btn btn-primary">Register</button>
+          <button type="submit" className="btn btn-primary" >Register</button>
           <br />
-          <p>Already have an account? <a href="/login/">Login Here</a></p>
+          <p>Already have an account? <a href="/login">Login Here</a></p>
         </form>
       </div>
     </div>
