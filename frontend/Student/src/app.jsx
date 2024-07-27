@@ -1,17 +1,18 @@
 import React, { useContext, useEffect } from "react";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Register from "./components/register.jsx";
+import { BrowserRouter , Routes, Route } from "react-router-dom";
+
 
 
 import axios from "axios";
-import { Context } from "./main";
-import Login from "./components/StudentLogin.jsx";
+import { Context } from "./main.jsx";
+import StudentLogin from "../components/StudentLogin.jsx";
+import Register from "../components/register.jsx"
 const App = () => {
 
   return (
     <>
-      <Router>
+    <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/login" element={<StudentLogin />} />
@@ -22,7 +23,7 @@ const App = () => {
         </Routes>
         <Footer />
         <ToastContainer position="top-center" />
-      </Router>
+        </BrowserRouter>
     </>
   );
 };
