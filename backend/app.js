@@ -13,7 +13,7 @@ config({ path: "./.env" });
 
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL_ONE, process.env.FRONTEND_URL_TWO,process.env.FRONTEND_URL_THREE],
+    origin: [process.env.FRONTEND_URL_ONE, process.env.FRONTEND_URL_TWO, process.env.FRONTEND_URL_THREE],
     method: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
@@ -23,12 +23,6 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use(
-//   fileUpload({
-//     useTempFiles: true,
-//     tempFileDir: "/tmp/",
-//   })
-// );
 app.use("/api/v1/admin", adminroutes);
 app.use("/api/v1/student", studentroutes);
 app.use("/api/v1/teacher", teacherroutes);

@@ -1,38 +1,36 @@
 import React from 'react';
-import './Home.css';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function navbar() {
+export default function CustomNavbar() {
+  const handleDropdownChange = (event) => {
+    const selectedUrl = event.target.value;
+    if (selectedUrl) {
+      window.location.href = selectedUrl;
+    }
+  };
+
   return (
-    
-    <>
-    <nav className="navbar navbar-expand-lg navbar-light">
-      <div className="container">
-        <a className="navbar-brand" href="#">Be the Change</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link" href="#gram-panchayats">Home</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#water-user-committee">About us</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#pipelines">Impact Report</a>
-            </li>
-            {/* <li className="nav-item">
-              <a className="nav-link" href="#fees-collection">Fees Collection</a>
-            </li> */}
-            <li className="nav-item">
-              <a className="nav-link btn btn-primary" href="/portal/login">Login Panel</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-</>
-  )
+    <Navbar bg="light" expand="lg">
+      <Container>
+        <Navbar.Brand href="#">Be the Change</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbarNav" />
+        <Navbar.Collapse id="navbarNav" className="justify-content-end">
+          <Nav>
+            <Nav.Link href="#gram-panchayats">Home</Nav.Link>
+            <Nav.Link href="https://www.chatbot.com/preview/?widgetId=66a531c2692d6400077eef62">About us</Nav.Link>
+            <Nav.Link href="https://www.canva.com/design/DAFoZ6QwNvA/M_BRCX1vMPIU_pLPGbOK5g/view?website#2:c-mmunities-of-change">Impact Report</Nav.Link>
+            <Nav.Item>
+              <select id="navbarDropdown" className="form-control btn btn-primary" onChange={handleDropdownChange}>
+                <option value="">Login</option>
+                <option value="http://localhost:5174/">Admin</option>
+                <option value="http://localhost:5175/">Teacher</option>
+                <option value="http://localhost:5176/">Student</option>
+              </select>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
