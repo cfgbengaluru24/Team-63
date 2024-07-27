@@ -1,5 +1,5 @@
 import express from "express";
-import { registerTeacher,loginTeacher,postmeetingnotes,getmeetingnotes,announcement,postAnnouncement } from "../controllers/teacher.controller";
+import { registerTeacher,loginTeacher,postmeetingnotes,getmeetingnotes,announcement,postAnnouncement } from "../controllers/teacher.controller.js";
 
 const router = express.Router();
 

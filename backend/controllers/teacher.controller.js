@@ -1,4 +1,4 @@
-import volunteerSchema from "../models/volunteerSchema";
+import Volunteer from "../models/volunteerSchema.js";
 import bcrypt from "bcrypt";
 import lessonNotes from "../models/lessonNotesSchema.js"
 import { ApiError } from "../utils/ApiError.js"
@@ -10,13 +10,13 @@ const registerTeacher = async (req, res) => {
     if ([fullname, email, password, subject].some((field) => field?.trim() === "")) {
         return new ApiError(400,"All fields must be filled");
     }
-    const existedTeacher = await volunteerSchema.findOne({
+    const existedTeacher = await Volunteer.findOne({
         $and:[{email:email},{username:username}]
     })
     if (existedTeacher) {
         return new ApiError(404,"User already registered");
     }
-    const Teacher = await volunteerSchema.create(
+    const Teacher = await Volunteer.create(
         {
             password: password,
             fullname: fullname,
@@ -37,7 +37,7 @@ const loginTeacher = async (req, res) => {
     if (!username || !email || !password) {
         return new ApiError(400,"All details must be filled ");
     }
-    const Teacher = await volunteerSchema.findOne({
+    const Teacher = await Volunteer.findOne({
         $and: [{ username: username }, { email: email }]
     })
     if (!Teacher) {
@@ -47,7 +47,7 @@ const loginTeacher = async (req, res) => {
     if (!isMatched) {
         return new ApiError(400,"Enter valid password");
     }
-    const accessToken = volunteerSchema.generateAccessToken();
+    const accessToken = Volunteer.generateAccessToken();
     return res.status(200).json({ message: "Teacher logged in", accessToken: accessToken })
 }
 
@@ -68,11 +68,11 @@ const updatePassword = async (req, res) => {
     if (password?.trim() === "") {
         return res.status(400).json({ message: "Password not entered" })
     }
-    const prevTeacher = await volunteerSchema.findByIdAndDelete(req?.Teacher?._id)
+    const prevTeacher = await Volunteer.findByIdAndDelete(req?.Teacher?._id)
     if (!prevTeacher) {
         return res.status(400).json({ message: "Teacher not found" })
     }
-    const savedTeacher = await volunteerSchema.create({
+    const savedTeacher = await Volunteer.create({
         username: prevTeacher.username,
         email: prevTeacher.email,
         fullname: prevTeacher.fullname,
@@ -92,7 +92,7 @@ const profile = async (req, res) => {
     const username= req?.Teacher?.username;
     const email = req?.Teacher?.email
     try {
-        const existedTeacher=await volunteerSchema.findOne(
+        const existedTeacher=await Volunteer.findOne(
         {
             $and:[{username:username},{email:email}]
         }
