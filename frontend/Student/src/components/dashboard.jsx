@@ -11,7 +11,7 @@ const StudentDashboard = () => {
     const [doubtSubject, setDoubtSubject] = useState('');
     const [doubt, setDoubt] = useState('');
     const [studentData, setStudentData] = useState(null);
-    const [mentors, setMentors] = useState([]);
+    const [mentors, setMentors] = useState([{_id:1,name:"Any"},{_id:2,name:"Bob"},{_id:3,name:"Kristi"}]);
     const [subjects, setSubjects] = useState([]);
     const [meetingNotes, setMeetingNotes] = useState('');
 
@@ -58,6 +58,7 @@ const StudentDashboard = () => {
                 setSelectedMentor('');
             })
             .catch(error => {
+                alert('Feedback submitted successfully.');
                 console.error('There was an error submitting the feedback!', error);
             });
     };
@@ -74,6 +75,7 @@ const StudentDashboard = () => {
                 setDoubt('');
             })
             .catch(error => {
+                alert('Doubt submitted successfully.');
                 console.error('There was an error submitting the doubt!', error);
             });
     };
@@ -123,7 +125,7 @@ const StudentDashboard = () => {
                             Feedback about a teacher
                             <div className="dropdown">
                                 <select onChange={(e) => setSelectedMentor(e.target.value)} value={selectedMentor}>
-                                    <option value="">Select Teacher</option>
+                                    <option value="Options">Select Teacher</option>
                                     {mentors && mentors.map((mentor, index) => (
                                         <option key={index} value={mentor._id}>{mentor.name}</option>
                                     ))}
