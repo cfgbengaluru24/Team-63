@@ -15,6 +15,18 @@ const PairSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Volunteer',
         required: true
+    },
+    startTime:
+    {
+        type:String
+    },
+    endTime:
+    {
+        type:String
+    },
+    meetingLink:
+    {
+        type:String
     }
 }, {
     timestamps: true
