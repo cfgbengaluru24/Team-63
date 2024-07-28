@@ -10,9 +10,9 @@ export default function Home() {
         <div className="overlay"></div>
         <div className="container">
           <div className="hero-content">
-            <h1>Welcome to Dhulikona Foundation</h1>
-            <p className="mb-4">Empowering Villages, Transforming Lives</p>
-            <p>Uttar Pradesh, located in the northern part of India, is renowned for its rich cultural heritage and vibrant village life. Here, amidst serene landscapes, traditional homes, and bustling agricultural fields, life flourishes in harmony with nature. Festivals and community gatherings punctuate the rhythm of village life, fostering a strong sense of community and belonging. Discover the essence of Uttar Pradesh villages through our collection of captivating images.</p>
+            <h1>Welcome!</h1>
+            <p className="mb-4">Empowering Futures: Education, Mentorship, and Social Impact with U&I</p>
+            
           </div>
         </div>
       </section>
@@ -22,24 +22,24 @@ export default function Home() {
         <div className="row">
           {/* Grid Items with Images and Descriptions */}
           <div className="col-md-6 col-lg-3 grid-item">
-            <img src="images/up1.jpg" className="img-fluid" alt="Traditional Festivals" />
-            <p>Traditional Festivals</p>
+            <img src='https://optim.tildacdn.one/tild3035-6132-4933-b432-363331323466/-/format/webp/Untitled_design_31.png' className="img-fluid" alt="Volunteer" />
+            <p>Volunteer</p>
           </div>
           <div className="col-md-6 col-lg-3 grid-item">
-            <img src="images/up2.jpg" className="img-fluid" alt="Agricultural Fields" />
-            <p>Agricultural Fields</p>
+            <img src='https://optim.tildacdn.one/tild6634-3037-4265-b239-333336356233/-/format/webp/Untitled_design_33.png' className="img-fluid" alt="Be the Change Movement" />
+            <p>Be the Change Movement</p>
           </div>
           <div className="col-md-6 col-lg-3 grid-item">
-            <img src="images/up3.jpeg" className="img-fluid" alt="Rural Homes" />
-            <p>Rural Homes</p>
+            <img src='/src/images/Untitled_design_24.png' className="img-fluid" alt="Rural HomesAspiring the Weak" />
+            <p>Aspiring the Weak</p>
           </div>
           <div className="col-md-6 col-lg-3 grid-item">
-            <img src="images/up4.jpeg" className="img-fluid" alt="Community Celebrations" />
-            <p>Community Celebrations</p>
+            <img src='/src/images/Untitled_design_24.png' className="img-fluid" alt="Our Motivation" />
+            <p>Our Motivation</p>
           </div>
         </div>
       </div>
 
-      </div>
-  );
+   </div>
+);
 }
