@@ -25,7 +25,6 @@ const App = () => {
           <Route path="/dashboard" element={<StudentDashboard />} />
 
         </Routes>
-
       </Router>
     </>
   );
