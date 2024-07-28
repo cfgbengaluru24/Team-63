@@ -23,9 +23,9 @@ export default function CustomNavbar() {
             <Nav.Item>
               <select id="navbarDropdown" className="form-control btn btn-primary" onChange={handleDropdownChange}>
                 <option value="">Login</option>
-                <option value="http://localhost:5174/">Admin</option>
+                <option value="http://localhost:5176/">Admin</option>
                 <option value="http://localhost:5175/">Teacher</option>
-                <option value="http://localhost:5176/">Student</option>
+                <option value="http://localhost:5174/">Student</option>
               </select>
             </Nav.Item>
           </Nav>

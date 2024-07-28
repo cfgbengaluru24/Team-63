@@ -3,7 +3,7 @@ import { registerTeacher,loginTeacher,postmeetingnotes,getmeetingnotes,announcem
 
 const router = express.Router();
 
-router.get("/meetingnotes",getmeetingnotes);
+router.get("/meetingnotes/:studentmail",getmeetingnotes);
 router.post("/meetingnotes", postmeetingnotes );
 router.post('/cancel',postAnnouncement);
 router.get('/announcement',announcement);
